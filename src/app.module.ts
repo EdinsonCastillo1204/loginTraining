@@ -5,10 +5,7 @@ import { UserModule } from './login/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [
-    MongooseModule.forRoot('mongodb://localhost/login'),
-    UserModule, 
-  ],
+  imports: [MongooseModule.forRoot('mongodb://localhost/login'), UserModule],
   controllers: [AppController],
   providers: [AppService],
 })

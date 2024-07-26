@@ -8,17 +8,15 @@ import { AuthUserDTO } from './user.dto';
 export class UserService {
   constructor(@InjectModel(User.name) private UserModel: Model<User>) {}
 
-  async Auth(user) {
-
+  async Auth(user: AuthUserDTO) {
     const userFound = await this.UserModel.findOne({
-        userName: user.userName
+      userName: user.userName,
     });
-    
-    if(!userFound){
-        throw new HttpException('user no found', HttpStatus.NOT_FOUND)
+
+    if (!userFound) {
+      throw new HttpException('user no found', HttpStatus.NOT_FOUND);
     }
 
     return userFound;
   }
 }
-
